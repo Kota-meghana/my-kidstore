@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Module</title>
+  <link rel="stylesheet" href="login.component.css">
+</head>
+<body style="background-image: url(https://png.pngtree.com/background/20210711/original/pngtree-rainbow-gradient-children-s-day-fun-bonner-background-picture-image_1079061.jpg); background-position: center;background-size: cover;">
+  <div class="login-container"> 
+    <div class="login-box" style="width:700px; height:500px;">
+      <div class="signin-section" style="background-image: url(https://png.pngtree.com/background/20210711/original/pngtree-rainbow-gradient-children-s-day-fun-bonner-background-picture-image_1079061.jpg);background-position: center;background-size: cover;">
+        <h2>Login</h2>
+        <form [formGroup]="customerFormGroup" (ngSubmit)="onSubmit()">
+          <label for="email">Email</label>
+          <input type="text" id="email" formControlName="email" placeholder="Email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+            <div *ngIf="email.errors['required']">Email is required.</div>
+            <div *ngIf="email.errors['email']">Invalid email format.</div>
+          </div>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" placeholder="Password">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+            <div *ngIf="password.errors['required']">Password is required.</div>
+          </div>
+
+          <button type="submit" [disabled]="customerFormGroup.invalid " style="background-color:deeppink;">Login</button>
+
+          <div class="options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember">
+              <label for="remember">Remember Me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot Password</a>
+          </div>
+        </form>
+
+        
+      </div>
+      <div class="welcome-section" style="background-image: url(https://www.pngguru.in/storage/uploads/images/Gradient%20rainbow%20background%20-%20Download%20on%20pngguru_1672143898_1352693178.webp);background-position: center;background-size: cover;">
+        <h2>Welcome to login</h2>
+        <p>Don't have an account?</p>
+        <button class="signup-button" (click)="redirectToSignup()">Register</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
